@@ -1,0 +1,65 @@
+<!-- <p>notes works!</p>
+<div class="container">
+    <h3>Notes</h3>
+    <form [formGroup]="notesForm">
+       
+        <div class="form-group">
+             <label> Name</label>
+             <input formControlName="Name" required
+             [class.is-invalid]="Name.invalid &&Name.touched"
+              type="text" class="form-control" />
+  
+        <div *ngIf="Name.invalid && Name.touched">
+            <small class="text-danger" *ngIf="Name.errors.required">Name is required</small>
+            <small class="text-danger" *ngIf="Name.errors.forbiddenName">{{Name.errors.forbiddenName.value}} is not allowed</small>
+        </div>
+      
+        </div>
+  
+        <select class="custom-select" (change)="changeProduct($event)"
+        formControlName="productName" required>
+          <option value="" disabled>Choose your Product</option>
+          <option *ngFor="let product of Product" [ngValue]="product">{{product}}</option>
+  
+       </select>
+  
+        <div class="form-check" formControlName="check">
+          <label>  Does Product Containd Discount</label>
+          <input type="checkbox" formControlName="check">
+          </div>
+  
+  <div class=form-group  *ngIf="check.value">
+      <label>Enter Discount</label>
+  <input type="number" class="form-control"  formControllName="discount">
+  </div>
+  
+  
+      <div class="form-group">
+          <button (click)="Add()">Add comment</button>
+  
+          <div formArrayName="comments" *ngFor="let newComment of comments.controls; let i=index">
+              <label>Add New Comment</label>
+              <input type="text" class="form-control" [formControlName]="i">
+  
+          </div>
+  
+      </div>
+  
+      <div class="form-group">
+  
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+            <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  
+  
+  </div> -->

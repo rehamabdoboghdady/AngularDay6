@@ -1,0 +1,99 @@
+
+<h3>{{"hello : "+ClientName}}</h3>
+    <img [src]=StoreLogo>
+<div class="hero-text">
+   
+    <h1>{{StoreName}}</h1>
+<h3 *ngIf="'No Discount'">{{"We offer an explicit discount of: "+Discount}}</h3>
+</div> 
+<span style="color: darksalmon; font-size: larger;">Choose Your Favorite Categories :</span>
+<select>
+    <option *ngFor="let category of CategoryList">
+        {{category.Name}}
+    </option>
+</select><br><br>
+
+<input type="text" [(ngModel)]="ClientName"/>
+<h3>{{"hello : "+ClientName}}</h3>
+<div *ngIf="IsPurshased; then thenBlock; else elseBlock">
+</div>
+<div style="text-align: center;">
+    <button class="btn btn-success" (click)="Bye()">Bye</button>
+    <ng-template #thenBlock>
+    
+      <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of ProductList">
+            <tr>
+            <td>{{product.ID}}</td>
+            <td>{{product.Name | uppercase}}</td>
+            <td>{{product.Price}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{30|percentdiscount}}</td>
+          </tr>
+        </tbody>
+      </table><br><br>
+    </ng-template>
+    
+    <ng-template #elseBlock>
+    
+    <h3>Thank you for purshasing from our store {{ClientName}}</h3>
+    
+    </ng-template>
+    <br><br>
+    <div *ngIf="flag; then thenBlock2;">
+    </div>
+    <button class="btn btn-success" (click)="RenderValues()">Click Me  </button>
+   
+    <ng-template #thenBlock2>
+    
+        <table class="table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Discount</th>
+              </tr>
+          </thead>
+          <tbody *ngFor="let product of AllProducts">
+              <tr>
+              <td>{{product.ID}}</td>
+              <td>{{product.Name | uppercase}}</td>
+              <td>{{product.Price}}</td>
+              <td>{{product.Quantity}}</td>
+              <td>{{30|percentdiscount}}</td>
+            </tr>
+          </tbody>
+        </table><br><br>
+      </ng-template><br><br>
+      <label >Enter Product Id :</label>
+      <input type="text"  #proid>
+      <button class="btn btn-success" (click)="RenderValuesById(proid.value)" >Get Product</button>
+      <div *ngIf="flagid; then thenBlock3;">
+      </div>
+      <ng-template #thenBlock3>
+    
+       <!-- {{"Product Name : "+ProductId.Name+ "  , "}} 
+       {{"Product Price : "+ProductId.Price+"  , "}} 
+       {{"Product Quantity : "+ProductId.Quantity+"   "}}  -->
+      </ng-template><br><br>
+      <div>
+        <button class="btn btn-success" (click)="ProductsWithDiscount()">Products With Discount</button>
+      </div>
+      <br><br>
+      <div>
+        <button class="btn btn-success" (click)="ProductsWithOutDiscount()">Products WithOut Discount</button>
+      </div>
+      <router-outlet></router-outlet>
+     
+
